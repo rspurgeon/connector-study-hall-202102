@@ -1,0 +1,19 @@
+{ "name": "orders-bq-sink",
+  "config": {
+    "topics": "orders",
+    "input.data.format": "AVRO",
+    "connector.class": "BigQuerySink",
+    "name": "orders-bq-sink",
+    "kafka.api.key": env.KAFKA_API_KEY,
+    "kafka.api.secret": env.KAFKA_API_SECRET,
+    "keyfile": env.ORDERS_BQ_SINK_KEYFILE,
+    "keyfile": ,
+    "project": "devx-testing",
+    "datasets": "orders",
+    "auto.create.tables": "true",
+    "auto.update.schemas": "true",
+    "sanitize.topics": "false",
+    "sanitize.field.names": "false",
+    "tasks.max": "1"
+  }
+}
