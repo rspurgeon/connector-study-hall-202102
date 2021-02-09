@@ -43,6 +43,8 @@ Set Kafka cluster "lkc-36r20" as the active cluster for environment "env-pwv35".
   store it in a file that won't get added to source control. For prod use cases use a key assigned to a service
 	account with ACLs applied [Docs](https://docs.confluent.io/cloud/current/access-management/acl.html).
 ```
+cat api-key-example.json
+
 ccloud api-key create --resource lkc-36r20 -o json > .secret/kafka-api-key.json
 ```
 
