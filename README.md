@@ -81,6 +81,8 @@ cat bq-sink-post-example.json
 * Now we use the Confluent Cloud Connector REST API to post the connector to Confluent Cloud 
   with our environment and cluster ID in the URL
 ```
+curl -XGET -H 'Content-Type: application/json' --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-pwv35/clusters/lkc-36r20/connectors
+
 curl -XPOST -H 'Content-Type: application/json' --data "@.secret/bq-sink-post.json" --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-pwv35/clusters/lkc-36r20/connectors
 ```
 
