@@ -71,6 +71,8 @@ export ORDERS_BQ_SINK_KEYFILE=$(cat .secret/devx-gcp-keyfile.json | jq -r -c)
 * Template the environmnet variables into a JSON document we can post to the connector REST API, 
 	and the result will look like the example bq-sink-post-example.json
 ```
+cat bq-sink-template.json
+
 jq -n -f ./bq-sink-template.json > .secret/bq-sink-post.json
 
 
