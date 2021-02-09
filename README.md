@@ -11,12 +11,13 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 
 * Kafka Connect
   * [From Zero to Hero with Kafka Connect](https://talks.rmoff.net/ScGJTe#sjBYBqW) credit: [Robin Moffatt](https://github.com/rmoff)
+  * [Kafka Connect REST API](https://docs.confluent.io/platform/current/connect/references/restapi.html)
   * [Confluent Cloud Managed Connector Docs](https://docs.confluent.io/cloud/current/connectors/index.html)
 
 * Confluent Cloud 
   * [New Signups](https://confluent.cloud/signup)
   * Use the Coupon Code `CONNECT200` for a $200 credit
-  * [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/index.html)
+  * [Confluent Cloud CLI Install](https://cnfl.io/install-cloud-cli-mu)
 
 * jq: command-line JSON processor
   * [Download](https://stedolan.github.io/jq/download/)
@@ -32,14 +33,14 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
   * [Blog: DevOps for Apache Kafka with Kubernetes and GitOps](https://www.confluent.io/blog/devops-for-apache-kafka-with-kubernetes-and-gitops/)
   * [Blog: Spring Your Microservices into Production with Kubernetes and GitOps](https://www.confluent.io/blog/spring-microservices-into-production-with-kubernetes-gitops/)
 
-# Workshop Command Reference
+# Workshop Commands
 
 * Login to ccloud
 ```
 ccloud login --save
 ```
 
-* To set the current ccloud environment you want to work with:
+* To set the current ccloud environment you want to work with (substitute your environment ID):
 ```
 ccloud environment list
 
@@ -47,7 +48,7 @@ ccloud environment use env-pwv35
 Now using "env-pwv35" as the default (active) environment.
 ```
 
-* To set the current kafka cluster you want to work with:
+* To set the current kafka cluster you want to work with (substitute your Kafka cluster ID):
 ```
 ccloud kafka cluster list
 
@@ -112,4 +113,16 @@ jq -r '.config' .secret/bq-sink-post.json | jq '.name = "orders-bq-sink-ccloud' 
 
 ccloud connector create --config .secret/bq-sink-ccloud.json
 ```
+
+# Cleanup
+
+*NOTE* Be sure to cleanup any resources used in today's meetup to avoid unexpected charges.
+
+* You can cleanup any connectors from the Confluent Cloud UI.  Environment->Cluster->Connectors, then click on the connector and choose the Delete button
+
+# Next Steps
+
+* Give Confluent Cloud a spin with [Confluent Cloud Examples(https://docs.confluent.io/platform/current/tutorials/examples/ccloud/docs/ccloud-demos-overview.html?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.ccloud)
+* For advanced operational use cases, check out the [streaming-ops project](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
+
 
