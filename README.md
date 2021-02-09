@@ -3,8 +3,8 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 
 # Agenda
 
-* Brief Introduction to Kafka Connect & Confluent Cloud
-* Managed Connectors with Confluent Cloud REST API & `ccloud` CLI
+* Introduction to Kafka Connect & Confluent Cloud Managed Connectors
+* Managed Connector operations with Confluent Cloud REST API & `ccloud` CLI
 * Apache Kafka DevOps with Kubernetes & GitOps
 
 # Tech
