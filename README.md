@@ -14,25 +14,83 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 * Google Cloud Platform
   * https://console.cloud.google.com/freetrial/signup/tos
   * [Google Big Query](https://cloud.google.com/bigquery)
+		* [Confluent BigQuery Sink connector docs](https://docs.confluent.io/cloud/current/connectors/cc-gcp-bigquery-sink.html)
 
 # Command Reference
 
+* Login to ccloud
+```
+ccloud login --save
+```
+
 * To set the current ccloud environment you want to work with:
 ```
+ccloud environment list
+
 ccloud environment use env-pwv35
 Now using "env-pwv35" as the default (active) environment.
 ```
+
 * To set the current kafka cluster you want to work with:
 ```
+ccloud kafka cluster list
+
 ccloud kafka cluster use lkc-36r20
 Set Kafka cluster "lkc-36r20" as the active cluster for environment "env-pwv35".
 ```
-* We need an API Key to auth with Kafka, we can take a shortcut and create a "SuperUser" key for the time being
-  and store it in a file that won't get added to source control
+
+* We need an API Key to auth with Kafka, use ccloud api-create to 
+  store it in a file that won't get added to source control. For prod use cases use a key assigned to a service
+	account with ACLs applied [Docs](https://docs.confluent.io/cloud/current/access-management/acl.html).
+```
+ccloud api-key create --resource lkc-36r20 -o json > .secret/kafka-api-key.json
+```
+
+* We need an API Key to auth to the Confluent Cloud control plane, same routine as above
 ```
 ccloud api-key create --resource cloud -o json > .secret/api-key.json
 ```
 
+* Using `jq`, put the Kafka API Key and Secret into env vars so we can template them into the connector configuration before POSTing
+```
+export KAFKA_API_KEY=$(jq -r '.key' .secret/kafka-api-key.json)
+export KAFKA_API_SECRET=$(jq -r '.secret' .secret/kafka-api-key.json)
+export CURL_USER=$(jq -r '.key' .secret/api-key.json)
+export CURL_PWD=$(jq -r '.secret' .secret/api-key.json)
+```
+
+* GCP automates auth with a "keyfile" in the form of JSON document.  In order to post 
+  this keyfile to a connector, we need to "stringify it so the full managed connector doc 
+	remains a valid JSON doc. To "Stringify" the GCP Keyfile, we use `jq`.
+```
+cat bq-keyfile-example.json
+
+export ORDERS_BQ_SINK_KEYFILE=$(cat .secret/devx-gcp-keyfile.json | jq -r -c)
+```
+
+* Template the environmnet variables into a JSON document we can post to the connector REST API, 
+	and the result will look like the example bq-sink-post-example.json
+```
+jq -n -f ./bq-sink-template.json > .secret/bq-sink-post.json
+
+
+cat bq-sink-post.json
+```
+
+* Now we use the Confluent Cloud Connector REST API to post the connector to Confluent Cloud 
+  with our environment and cluster ID in the URL
+```
+curl -XPOST -H 'Content-Type: application/json' --data "@.secret/bq-sink-post.json" --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-pwv35/clusters/lkc-36r20/connectors
+```
+
+* Now let's do the same operation with the ccloud CLI.  Currently, the CLI requires
+  only the configuration portion of the connector definition. So we pull that out 
+  once again with `jq` and we'll update the name so we get a second connector:
+```
+jq -r '.config' .secret/bq-sink-post.json | jq '.name = "orders-bq-sink-ccloud' > .secret/bq-sink-ccloud.json
+
+ccloud connector create --config .secret/bq-sink-ccloud.json
+```
 
 
 # References
