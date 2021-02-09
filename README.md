@@ -75,7 +75,6 @@ cat bq-sink-template.json
 
 jq -n -f ./bq-sink-template.json > .secret/bq-sink-post.json
 
-
 cat bq-sink-post-example.json
 ```
 
