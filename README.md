@@ -5,24 +5,24 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 
 * Kafka Connect
   * [From Zero to Hero with Kafka Connect](https://talks.rmoff.net/ScGJTe#sjBYBqW) credit: [Robin Moffatt](https://github.com/rmoff)
-	* [Confluent Cloud Managed Connector Docs](https://docs.confluent.io/cloud/current/connectors/index.html)
+  * [Confluent Cloud Managed Connector Docs](https://docs.confluent.io/cloud/current/connectors/index.html)
 
 * Confluent Cloud 
   * [New Signups](https://confluent.cloud/signup)
   * Use the Coupon Code `CONNECT200` for a $200 credit
-	* [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/index.html)
+  * [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/index.html)
 
 * jq: command-line JSON processor
-	* [Download](https://stedolan.github.io/jq/download/)
+  * [Download](https://stedolan.github.io/jq/download/)
 
 * Google Cloud Platform
   * [Signup](https://console.cloud.google.com/freetrial/signup/tos)
   * [Google Big Query](https://cloud.google.com/bigquery)
-	* [Confluent BigQuery Sink connector docs](https://docs.confluent.io/cloud/current/connectors/cc-gcp-bigquery-sink.html)
+  * [Confluent BigQuery Sink connector docs](https://docs.confluent.io/cloud/current/connectors/cc-gcp-bigquery-sink.html)
 
 * streaming-ops
   * [GitHub](https://github.com/confluentinc/streaming-ops)
-	* [Docs](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
+  * [Docs](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
   * [Blog: DevOps for Apache Kafka with Kubernetes and GitOps](https://www.confluent.io/blog/devops-for-apache-kafka-with-kubernetes-and-gitops/)
   * [Blog: Spring Your Microservices into Production with Kubernetes and GitOps](https://www.confluent.io/blog/spring-microservices-into-production-with-kubernetes-gitops/)
 
@@ -51,7 +51,7 @@ Set Kafka cluster "lkc-36r20" as the active cluster for environment "env-pwv35".
 
 * We need an API Key to auth with Kafka, use ccloud api-create to 
   store it in a file that won't get added to source control. For prod use cases use a key assigned to a service
-	account with ACLs applied [Docs](https://docs.confluent.io/cloud/current/access-management/acl.html).
+  account with ACLs applied [Docs](https://docs.confluent.io/cloud/current/access-management/acl.html).
 ```
 cat api-key-example.json
 
@@ -73,7 +73,7 @@ export CURL_PWD=$(jq -r '.secret' .secret/api-key.json)
 
 * GCP automates auth with a "keyfile" in the form of JSON document.  In order to post 
   this keyfile to a connector, we need to "stringify it so the full managed connector doc 
-	remains a valid JSON doc. To "Stringify" the GCP Keyfile, we use `jq`.
+  remains a valid JSON doc. To "Stringify" the GCP Keyfile, we use `jq`.
 ```
 cat bq-keyfile-example.json
 
@@ -81,7 +81,7 @@ export ORDERS_BQ_SINK_KEYFILE=$(cat .secret/devx-gcp-keyfile.json | jq -r -c)
 ```
 
 * Template the environmnet variables into a JSON document we can post to the connector REST API, 
-	and the result will look like the example bq-sink-post-example.json
+  and the result will look like the example bq-sink-post-example.json
 ```
 cat bq-sink-template.json
 
