@@ -3,20 +3,30 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 
 # Tech
 
+* Kafka Connect
+  * [From Zero to Hero with Kafka Connect](https://talks.rmoff.net/ScGJTe#sjBYBqW) credit: [Robin Moffatt](https://github.com/rmoff)
+	* [Confluent Cloud Managed Connector Docs](https://docs.confluent.io/cloud/current/connectors/index.html)
+
 * Confluent Cloud 
-  * New Signups: https://confluent.cloud/signup
+  * [New Signups](https://confluent.cloud/signup)
   * Use the Coupon Code `CONNECT200` for a $200 credit
 	* [Confluent Cloud CLI](https://docs.confluent.io/ccloud-cli/current/index.html)
 
 * jq: command-line JSON processor
-	* https://stedolan.github.io/jq/download/
+	* [Download](https://stedolan.github.io/jq/download/)
 
 * Google Cloud Platform
-  * https://console.cloud.google.com/freetrial/signup/tos
+  * [Signup](https://console.cloud.google.com/freetrial/signup/tos)
   * [Google Big Query](https://cloud.google.com/bigquery)
-		* [Confluent BigQuery Sink connector docs](https://docs.confluent.io/cloud/current/connectors/cc-gcp-bigquery-sink.html)
+	* [Confluent BigQuery Sink connector docs](https://docs.confluent.io/cloud/current/connectors/cc-gcp-bigquery-sink.html)
 
-# Command Reference
+* streaming-ops
+  * [GitHub](https://github.com/confluentinc/streaming-ops)
+	* [Docs](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
+  * [Blog: DevOps for Apache Kafka with Kubernetes and GitOps](https://www.confluent.io/blog/devops-for-apache-kafka-with-kubernetes-and-gitops/)
+  * [Blog: Spring Your Microservices into Production with Kubernetes and GitOps](https://www.confluent.io/blog/spring-microservices-into-production-with-kubernetes-gitops/)
+
+# Workshop Command Reference
 
 * Login to ccloud
 ```
@@ -96,13 +106,4 @@ jq -r '.config' .secret/bq-sink-post.json | jq '.name = "orders-bq-sink-ccloud' 
 
 ccloud connector create --config .secret/bq-sink-ccloud.json
 ```
-
-
-# References
-
-* streaming-ops
-  * [GitHub](https://github.com/confluentinc/streaming-ops)
-	* [Docs](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
-  * [Blog: DevOps for Apache Kafka with Kubernetes and GitOps](https://www.confluent.io/blog/devops-for-apache-kafka-with-kubernetes-and-gitops/)
-  * [Blog: Spring Your Microservices into Production with Kubernetes and GitOps](https://www.confluent.io/blog/spring-microservices-into-production-with-kubernetes-gitops/)
 
