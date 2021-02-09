@@ -116,7 +116,7 @@ ccloud connector create --config .secret/bq-sink-ccloud.json
 
 # Cleanup
 
-*NOTE* Be sure to cleanup any resources used in today's meetup to avoid unexpected charges.
+**NOTE** : Be sure to cleanup any resources used in today's meetup to avoid unexpected charges.
 
 * You can cleanup any connectors from the Confluent Cloud UI.  Environment->Cluster->Connectors, then click on the connector and choose the Delete button
 
