@@ -1,0 +1,13 @@
+{
+  "name": "pageviews-datagen",
+  "config": {
+    "name": "pageviews-datagen",
+    "kafka.api.key": env.KAFKA_API_KEY,
+    "kafka.api.secret": env.KAFKA_API_SECRET,
+    "connector.class": "DatagenSource",
+    "kafka.topic": "pageviews",
+    "output.data.format": "AVRO",
+    "quickstart": "PAGEVIEWS",
+    "tasks.max": "1"
+  }
+}
