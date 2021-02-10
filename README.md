@@ -102,13 +102,15 @@ cat bq-sink-post-example.json
 curl -XGET -H 'Content-Type: application/json' --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-dwnqo/clusters/lkc-mgw81/connectors
 
 curl -XPOST -H 'Content-Type: application/json' --data "@.secret/bq-sink-post.json" --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-dwnqo/clusters/lkc-mgw81/connectors
+
+curl -XGET -H 'Content-Type: application/json' --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-dwnqo/clusters/lkc-mgw81/connectors/orders-bq-sink/status
 ```
 
 * Now let's do the same operation with the ccloud CLI.  Currently, the CLI requires
   only the configuration portion of the connector definition. So we pull that out 
   once again with `jq` and we'll update the name so we get a second connector:
 ```
-jq -r '.config' .secret/bq-sink-post.json | jq '.name = "orders-bq-sink-ccloud' > .secret/bq-sink-ccloud.json
+jq -r '.config' .secret/bq-sink-post.json | jq '.name = "orders-bq-sink-ccloud"' > .secret/bq-sink-ccloud.json
 
 ccloud connector create --config .secret/bq-sink-ccloud.json
 ```
