@@ -43,16 +43,16 @@ ccloud login --save
 ```
 ccloud environment list
 
-ccloud environment use env-pwv35
-Now using "env-pwv35" as the default (active) environment.
+ccloud environment use env-dwnqo
+Now using "env-dwnqo" as the default (active) environment.
 ```
 
 * To set the current kafka cluster you want to work with (substitute your Kafka cluster ID):
 ```
 ccloud kafka cluster list
 
-ccloud kafka cluster use lkc-36r20
-Set Kafka cluster "lkc-36r20" as the active cluster for environment "env-pwv35".
+ccloud kafka cluster use lkc-mgw81
+Set Kafka cluster "lkc-mgw81" as the active cluster for environment "env-pwv35".
 ```
 
 * We need an API Key to auth with Kafka, use ccloud api-create to 
@@ -61,7 +61,7 @@ Set Kafka cluster "lkc-36r20" as the active cluster for environment "env-pwv35".
 ```
 cat api-key-example.json
 
-ccloud api-key create --resource lkc-36r20 -o json > .secret/kafka-api-key.json
+ccloud api-key create --resource lkc-mgw81 -o json > .secret/kafka-api-key.json
 ```
 
 * We need an API Key to auth to the Confluent Cloud control plane, same routine as above
@@ -99,9 +99,9 @@ cat bq-sink-post-example.json
 * Now we use the Confluent Cloud Connector REST API to post the connector to Confluent Cloud 
   with our environment and cluster ID in the URL
 ```
-curl -XGET -H 'Content-Type: application/json' --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-pwv35/clusters/lkc-36r20/connectors
+curl -XGET -H 'Content-Type: application/json' --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-dwnqo/clusters/lkc-mgw81/connectors
 
-curl -XPOST -H 'Content-Type: application/json' --data "@.secret/bq-sink-post.json" --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-pwv35/clusters/lkc-36r20/connectors
+curl -XPOST -H 'Content-Type: application/json' --data "@.secret/bq-sink-post.json" --user "$CURL_USER:$CURL_PWD" https://api.confluent.cloud/connect/v1/environments/env-dwnqo/clusters/lkc-mgw81/connectors
 ```
 
 * Now let's do the same operation with the ccloud CLI.  Currently, the CLI requires
