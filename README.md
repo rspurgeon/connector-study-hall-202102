@@ -11,12 +11,11 @@ Bleeps and bloops from the Feb 21 2021 meetup on managed connectors and DevOps
 
 * Kafka Connect
   * [From Zero to Hero with Kafka Connect](https://talks.rmoff.net/ScGJTe#sjBYBqW) credit: [Robin Moffatt](https://github.com/rmoff)
-  * [Kafka Connect REST API](https://docs.confluent.io/platform/current/connect/references/restapi.html)
+  * [Confluent Cloud Managed Kafka Connect REST API](https://confluent.cloud/api/docs#tag/Connectors-(v1))
   * [Confluent Cloud Managed Connector Docs](https://docs.confluent.io/cloud/current/connectors/index.html)
 
 * Confluent Cloud 
-  * [New Signups](https://confluent.cloud/signup)
-  * Use the Coupon Code `CONNECT200` for a $200 credit
+  * [Signup](https://confluent.cloud/signup) Use the Coupon Code `CONNECT200` for a $200 credit
   * [Confluent Cloud CLI Install](https://cnfl.io/install-cloud-cli-mu)
 
 * jq: command-line JSON processor
@@ -122,7 +121,7 @@ ccloud connector create --config .secret/bq-sink-ccloud.json
 
 # Next Steps
 
-* Give Confluent Cloud a spin with [Confluent Cloud Examples(https://docs.confluent.io/platform/current/tutorials/examples/ccloud/docs/ccloud-demos-overview.html?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.ccloud)
+* Give Confluent Cloud a spin with [Confluent Cloud Quick Start Examples(https://docs.confluent.io/platform/current/tutorials/examples/ccloud/docs/ccloud-demos-overview.html?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.ccloud)
 * For advanced operational use cases, check out the [streaming-ops project](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
 
 
