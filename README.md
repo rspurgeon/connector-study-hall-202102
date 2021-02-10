@@ -117,13 +117,13 @@ ccloud connector create --config .secret/bq-sink-ccloud.json
 
 # Cleanup
 
-**NOTE** : Be sure to cleanup any resources used in today's meetup to avoid unexpected charges.
+**NOTE** : *Be sure to cleanup any resources used in today's meetup to avoid unexpected charges.*
 
 * You can cleanup any connectors from the Confluent Cloud UI.  Environment->Cluster->Connectors, then click on the connector and choose the Delete button
 
 # Next Steps
 
-* Give Confluent Cloud a spin with [Confluent Cloud Quick Start Examples(https://docs.confluent.io/platform/current/tutorials/examples/ccloud/docs/ccloud-demos-overview.html?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.ccloud)
+* Give Confluent Cloud a spin with [Confluent Cloud Quick Start Examples](https://docs.confluent.io/platform/current/tutorials/examples/ccloud/docs/ccloud-demos-overview.html?utm_source=github&utm_medium=demo&utm_campaign=ch.examples_type.community_content.ccloud)
 * For advanced operational use cases, check out the [streaming-ops project](https://docs.confluent.io/platform/current/tutorials/streaming-ops/index.html)
 
 
